@@ -11,7 +11,7 @@ const HeartSensorData=require('./models/HeartSensorData')
 
 const client  = mqtt.connect('mqtt://broker.emqx.io:1883')
 client.on('connect', function () {
-    client.subscribe('esp32/132667/healthcheck', function (err) {
+    client.subscribe('esp32/136050/healthcheck', function (err) {
      if(err){
         console.log("subscribed error")
      }else console.log('Server has subscribed successfully')
@@ -65,7 +65,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 async function connect() {
     try {
-        await mongoose.connect('mongodb+srv://nghiango:nghiango23102001@cluster0.pjnmw.mongodb.net/IOT?retryWrites=true&w=majority', {
+        await mongoose.connect('mongodb+srv://iotadmin:admin@hust.gfy8kif.mongodb.net/iot_resources?retryWrites=true&w=majority', {
            
             useNewUrlParser: true,
             useUnifiedTopology: true,
