@@ -1,0 +1,60 @@
+.de-user-modal {
+  position: fixed;
+  top: 0px;
+  z-index: 3;
+}
+.de-user-modal .de-pop-up {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 3;
+}
+.de-user-modal .de-main-content {
+  width: 40%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 30%;
+  margin-top: 5%;
+  border-radius: 6px;
+  background-color: rgb(255, 253, 253);
+  z-index: 3;
+  position: fixed;
+  text-align: center;
+}
+.de-user-modal .de-main-content .de-wrap-input{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.de-user-modal .de-main-content .de-wrap-input input{
+  width: 500px;
+  height: 20px;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid rgb(116, 115, 115);
+}
+.de-user-modal .de-main-content .de-button{
+  width: 200px;
+  background-color: rgb(78, 78, 243);
+  border-radius: 8px;
+  height: 50px;
+  margin-bottom: 20px;
+  border: none;
+  cursor: pointer;
+}
+.de-user-modal .de-main-content .de-wrap-button{
+  display: flex;
+}
+.de-user-modal .de-main-content .de-wrap-button .de-logout{
+  background-color: rgb(235, 60, 104);
+}

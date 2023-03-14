@@ -1,0 +1,53 @@
+.de-login-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.de-login-container .de-login{
+    width: 500px;
+    height: 500px;
+    margin-top: 5%;
+    background-color: rgb(236, 231, 231);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.de-login-container input{
+    width: 330px;
+    height: 40px;
+    padding: 10px 10px;
+    border-radius: 6px;
+    margin: 20px;
+    border: 1px solid rgb(116, 115, 115);
+}
+.de-login-container .de-button-wrap{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 330px;
+    display: flex;
+    justify-content: center;
+}
+.de-login-container .de-link{
+    color: blue;
+    cursor: pointer;
+}
+.de-login-container .de-button-wrap .de-button{
+    width: 150px;
+    height: 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+}
+.de-login-container .de-line{
+    display: flex;
+}
+.ds-bg-clr-green{
+    background-color:rgb(92, 247, 72)
+}
+.ds-bg-clr-blue{
+    background-color:rgb(57, 92, 250)
+}

@@ -8,20 +8,20 @@ const heartSensorSchema=new Schema({
         required: true,
         unique: true
     },
-    username:{
-        type: String,
-        required: true
-    },
-    name:{
-        type: String
-    },
-    info:{
-        type: String
-    },
-    create:{
-        type: Date,
-        default: new Date()
-    }
+    // username:{
+    //     type: String,
+    //     required: true
+    // },
+    // name:{
+    //     type: String
+    // },
+    // info:{
+    //     type: String
+    // },
+    // create:{
+    //     type: Date,
+    //     default: new Date()
+    // }
 })
 
 

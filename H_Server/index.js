@@ -9,9 +9,9 @@ const HeartSensor=require('./models/HeartSensor')
 const HeartSensorData=require('./models/HeartSensorData')
 
 
-const client  = mqtt.connect('mqtt://broker.emqx.io:1883')
+const client  = mqtt.connect('mqtt://broker.hivemq.com:1883')
 client.on('connect', function () {
-    client.subscribe('esp32/136050/healthcheck', function (err) {
+    client.subscribe('esp32/healthcheck', function (err) {
      if(err){
         console.log("subscribed error")
      }else console.log('Server has subscribed successfully')
@@ -27,7 +27,7 @@ client.on('message',(topic,message)=>{
         const obj=JSON.parse(message.toString())
         obj.create=new Date()
         console.log("obj: ",obj,typeof(obj),obj.Id)
-        HeartSensor.findOne({Id: obj.Id })
+        HeartSensor.findOne({Id: obj.Id})
         .then(data=>{
             if(data){
                 HeartSensorData.create(obj)
@@ -65,7 +65,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 async function connect() {
     try {
-        await mongoose.connect('mongodb+srv://iotadmin:admin@hust.gfy8kif.mongodb.net/iot_resources?retryWrites=true&w=majority', {
+        // mongodb+srv://iotadmin:admin@hust.gfy8kif.mongodb.net/iot_resources?retryWrites=true&w=majority
+        await mongoose.connect('mongodb://localhost:27017/iot_resources', {
            
             useNewUrlParser: true,
             useUnifiedTopology: true,

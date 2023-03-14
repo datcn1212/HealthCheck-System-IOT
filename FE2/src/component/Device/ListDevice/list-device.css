@@ -1,0 +1,78 @@
+.de-container-list-device{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.de-wrap-list-device{
+  display: flex;
+  align-items: flex-start;
+}
+.de-list-device {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.de-list-device .de-player-icon {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+}
+.de-list-device .ds-device {
+  width: 250px;
+  height: 55px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background-color: #FFF;
+  border: 1px solid #1B74E4;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+  font-weight: bold;
+  color: #1B74E4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  cursor: pointer;
+}
+.de-list-device .de-device-hightlight{
+  background-color: #1B74E4 !important;
+  color: #FFF !important;
+}
+.de-list-device .ds-add-device{
+  width: 250px;
+  height: 55px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid red;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 25px;
+  font-weight: bold;
+  color:rgb(27, 26, 25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.de-list-device .ds-device .ds-icon{
+    display: flex;
+    align-items: center;
+}
+.de-list-device .ds-device .ds-icon .ds-flag-icon{
+    color: #1B74E4;
+    margin: 10px;
+}
+.de-list-device .ds-device .ds-icon .ds-flag-highlight{
+  color: #FFF !important;
+}
+.de-list-device .ds-device .ds-icon .ds-erase-icon{
+    color: rgb(255, 51, 0);
+}
+.de-list-device .ds-device .ds-title {
+  font-size: 20px;
+}
+.de-list-device .ds-device svg {
+  cursor: pointer;
+}

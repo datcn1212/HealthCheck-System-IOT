@@ -3,14 +3,14 @@
 #include <PubSubClient.h>
 #define PUB "esp32/on"
 // WiFi
-const char *ssid = "Canada"; // Enter your WiFi name
-const char *password = "caonhudat2";  // Enter WiFi password
+const char *ssid = "DatHoang"; // Enter your WiFi name
+const char *password = "dathoang2011";  // Enter WiFi password
 
 // MQTT Broker
 const char *mqtt_broker = "broker.hivemq.com";
-const char *topic = "dht11";
-const char *mqtt_username = "manh";
-const char *mqtt_password = "020601";
+const char *topic = "esp32/healthcheck";
+const char *mqtt_username = "admin";
+const char *mqtt_password = "admin";
 const int mqtt_port = 1883;
 
 String deviceId = "E123458";
@@ -132,44 +132,50 @@ void callback(char *topic, byte *payload, unsigned int length) {
 }
 
 void loop() {
-    for (int i = 1; i <= 3; i++)
-    {
-        float sensor = analogRead(SENSORPIN);
-        dtostrf(sensor, 4, 2, str_sensor);
-        sprintf(payload, "%s{\"value\":", payload); // Adds the value
-        sprintf(payload, "%s %s,", payload, str_sensor); // Adds the value
-        current_millis_at_sensordata = millis();
-        timestampp = epochmilliseconds + (current_millis_at_sensordata - current_millis);
-        dtostrf(timestampp, 10, 0, str_millis);
-        sprintf(payload, "%s \"timestamp\": %s},", payload, str_millis); // Adds the value
-        delay(150);
-    }
+
+  
+    // for (int i = 1; i <= 3; i++)
+    // {
+    //     float sensor = analogRead(SENSORPIN);
+    //     dtostrf(sensor, 4, 2, str_sensor);
+    //     sprintf(payload, "%s{\"value\":", payload); // Adds the value
+    //     sprintf(payload, "%s %s,", payload, str_sensor); // Adds the value
+    //     current_millis_at_sensordata = millis();
+    //     timestampp = epochmilliseconds + (current_millis_at_sensordata - current_millis);
+    //     dtostrf(timestampp, 10, 0, str_millis);
+    //     sprintf(payload, "%s \"timestamp\": %s},", payload, str_millis); // Adds the value
+    //     delay(150);
+    // }
     float sensor = analogRead(SENSORPIN);
+
+    int bpm = map(sensor, 0, 1023, 60, 220);
+
     dtostrf(sensor, 4, 2, str_sensor);
     current_millis_at_sensordata = millis();
     timestampp = epochmilliseconds + (current_millis_at_sensordata - current_millis);
     dtostrf(timestampp, 10, 0, str_millis);
-    sprintf(payload, "%s{\"value\":%s, \"timestamp\": %s}]}", payload, str_sensor, str_millis);
-    //client.publish(topic, payload);
+    // sprintf(payload, " %s{\"value\":%s, \"timestamp\": %s,  \"bpm\": %s}", payload, str_sensor, str_millis, bpm);
+    sprintf(payload, "\"bpm\": %s}", bpm);
+    client.publish(topic, payload);
     Serial.println();
     Serial.println(payload);
     Serial.println();
 
     if(sensor > UpperThreshold && IgnoreReading == false){
-    if(FirstPulseDetected == false){
-      FirstPulseTime = millis();
-      FirstPulseDetected = true;
-    }
-    else{
-      SecondPulseTime = millis();
-      PulseInterval = SecondPulseTime - FirstPulseTime;
-      FirstPulseTime = SecondPulseTime;
-      IgnoreReading = true;
-    }
+      if(FirstPulseDetected == false){
+        FirstPulseTime = millis();
+        FirstPulseDetected = true;
+      }
+      else{
+        SecondPulseTime = millis();
+        PulseInterval = SecondPulseTime - FirstPulseTime;
+        FirstPulseTime = SecondPulseTime;
+        IgnoreReading = true;
+      }
     }
 
     if(sensor < LowerThreshold){
-    IgnoreReading = false;
+      IgnoreReading = false;
     }  
 
     BPM = (1.0/PulseInterval) * 60.0 * 1000;
@@ -182,7 +188,7 @@ void loop() {
     Serial.println(" BPM");
 
     //client.subscribe("esp32/on");
-    publishMessage();
+    // publishMessage();
     client.loop();
     delay(10000);
     // if(requestData){

@@ -1,0 +1,65 @@
+.de-add-device-modal {
+  position: fixed;
+  top: 0px;
+  z-index: 3;
+}
+.de-add-device-modal .de-pop-up {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 3;
+}
+.de-add-device-modal .de-main-content {
+  width: 40%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 30%;
+  margin-top: 5%;
+  border-radius: 6px;
+  background-color: rgb(255, 253, 253);
+  z-index: 3;
+  position: fixed;
+  text-align: center;
+}
+.de-add-device-modal .de-main-content .de-wrap-button {
+  display: flex;
+  width: 520px;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+.de-add-device-modal .de-main-content .de-wrap-button .ds-button-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  background-color: rgb(47, 113, 255);
+  cursor: pointer;
+}
+.de-add-device-modal .de-main-content .de-wrap-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.de-add-device-modal .de-main-content .de-wrap-input input {
+  width: 500px;
+  height: 20px;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid rgb(116, 115, 115);
+}
